@@ -270,6 +270,11 @@
             var timeString = formatter.format(new Date());
             document.getElementById('timeValue').textContent = timeString;
         }
+// Update live ping and time every second
+        setInterval(function() {
+            calculateLivePing();
+            updateLiveTimeInKarachi();
+        }, 1000); // Update every 1 second
     </script>
 </body>
 </html>
