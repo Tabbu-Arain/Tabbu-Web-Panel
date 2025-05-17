@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +38,7 @@
             overflow-x: hidden;
         }
 
+        /* Navigation Styles */
         nav {
             background-color: #000;
             padding: 1rem 2rem;
@@ -51,11 +51,63 @@
             z-index: 1000;
         }
 
+        .nav-left, .nav-right {
+            flex: 1;
+            display: flex;
+        }
+
+        .nav-left {
+            justify-content: flex-start;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            text-align: center;
+            flex: 1;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            gap: 0.5rem;
+        }
+
+        .btn-facebook {
+            background-color: #1877f2;
+            color: white;
+        }
+
+        .btn-facebook:hover {
+            background-color: #166fe5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .menu-icon {
@@ -80,29 +132,16 @@
         }
 
         .nav-links {
-            display: flex;
+            display: none;
             list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 1.5rem;
+            gap: 1rem;
         }
 
         .nav-links a {
-            color: var(--primary-color);
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .nav-links a:hover {
-            color: var(--hover-color);
-        }
-
+        /* Container Styles */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -116,6 +155,8 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .status-box {
@@ -128,20 +169,13 @@
             gap: 0.8rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
+            flex-grow: 1;
         }
 
         .status-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(255, 0, 0, 0.2);
             border-color: var(--secondary-color);
-        }
-
-        .ping-box {
-            margin-right: auto; /* Pushes to the left */
-        }
-
-        .time-box {
-            margin-left: auto; /* Pushes to the right */
         }
 
         .status-icon {
@@ -186,25 +220,18 @@
             align-items: center;
             text-align: center;
             height: 100%;
+            color:red;
         }
-
+.service-card h2 {
+    color:yellow;
+}
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(255, 204, 0, 0.5);
             border-color: var(--secondary-color);
         }
 
-        .service-card h2 {
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--primary-color);
-            font-size: 0.95rem;
-        }
-
+        /* Footer Styles */
         footer {
             background-color: var(--card-bg);
             color: var(--primary-color);
@@ -217,36 +244,14 @@
         .footer-content {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .social-links a:hover {
-            color: var(--hover-color);
-        }
-
-        .facebook-link {
-            color: #1877f2 !important;
-        }
-
-        .whatsapp-link {
-            color: #25d366 !important;
         }
 
         /* Loading animation */
@@ -265,12 +270,31 @@
             to { transform: rotate(360deg); }
         }
 
+        .glowing-arrow {
+            color: YELLOW;
+            text-shadow: 0 0 10px YELLOW;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+  
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 1px YELLOW;
+            }
+            to {
+                text-shadow: 0 0 15px YELLOW;
+            }
+        }
+
         /* Responsive styles */
         @media (max-width: 768px) {
+            .nav-left, .nav-right {
+                display: none;
+            }
+            
             .menu-icon {
                 display: flex;
             }
-
+            
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -279,18 +303,15 @@
                 width: 100%;
                 flex-direction: column;
                 align-items: center;
-                padding: 1rem 0;
+                padding: 1.5rem;
                 transition: var(--transition);
             }
-
+            
             .nav-links.active {
                 left: 0;
+                display: flex;
             }
-
-            .nav-links li {
-                margin: 0.8rem 0;
-            }
-
+            
             .container {
                 padding: 1.5rem;
             }
@@ -308,9 +329,9 @@
                 gap: 1rem;
             }
 
-            .ping-box, .time-box {
-                width: 100%;
-                margin: 0;
+            .social-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -319,42 +340,46 @@
                 font-size: 1.5rem;
             }
 
-            .social-links {
-                flex-direction: column;
-                gap: 1rem;
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
             }
 
             .status-box {
                 padding: 0.8rem 1rem;
             }
         }
-        .glowing-arrow {
-    color: YELLOW;
-    text-shadow: 0 0 10px YELLOW;
-    animation: glow 1.5s ease-in-out infinite alternate;
-  }
-  
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 1px YELLOW;
-    }
-    to {
-      text-shadow: 0 0 15px YELLOW;
-    }
-  }
     </style>
 </head>
 <body>
     <nav>
+        <div class="nav-left">
+            <a href="https://wa.me/+994402197773" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏
+            </a>
+        </div>
         <div class="logo">𝐓𝐀𝐁𝐁𝐔 𝐀𝐑𝐀𝐈𝐍</div>
+        <div class="nav-right">
+            <a href="https://www.facebook.com/TabbuArain" class="btn btn-facebook">
+                <i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊
+            </a>
+        </div>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="https://www.facebook.com/TabbuArain" class="facebook-link"><i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊</a></li>
-            <li><a href="https://wa.me/+994402197773" class="whatsapp-link"><i class="fab fa-whatsapp"></i> 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏</a></li>
+            <li>
+                <a href="https://wa.me/+994402197773" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/TabbuArain" class="btn btn-facebook">
+                    <i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -371,6 +396,12 @@
                 <span class="status-text" style="color: red;">𝐓𝐈𝐌𝐄 ⁑</span>
                 <span class="status-value" id="timeValue"><span class="loading"></span>Loading...</span>
             </div>
+            
+            <div class="status-box date-box">
+                <i class="fas fa-calendar-day status-icon"></i>
+                <span class="status-text" style="color: red;">𝐃𝐀𝐓𝐄 ⁑</span>
+                <span class="status-value" id="dateValue"><span class="loading"></span>Loading...</span>
+            </div>
         </div>
         <h1 class="glowing-arrow">𝐂𝐎𝐍𝐕𝐎 𝐓𝐎𝐎𝐋𝐒 𝐁𝐘 𝐓𝐀𝐁𝐁𝐔</h1>
         
@@ -379,7 +410,7 @@
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟏</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-           <div class="service-card" onclick="window.location.href='http://fi8.bot-hosting.net:22201'">
+            <div class="service-card" onclick="window.location.href='http://fi8.bot-hosting.net:22201'">
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟐</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
@@ -387,7 +418,7 @@
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟑</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-           <div class="service-card" onclick="window.location.href='http://fi3.bot-hosting.net:21059'">
+            <div class="service-card" onclick="window.location.href='http://fi3.bot-hosting.net:21059'">
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟒</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
@@ -406,43 +437,45 @@
             <div class="service-card" onclick="window.location.href='https://fb-token-checker-by-tabbu.vercel.app'">
                 <h2>𝐂𝐇𝐄𝐂𝐊 𝐒𝐈𝐍𝐆𝐋𝐄 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐓𝐎𝐊𝐄𝐍</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙷𝙴𝙲𝙺𝚂 𝚈𝙾𝚄𝚁 𝚃𝙾𝙺𝙴𝙽 𝙴𝙸𝚃𝙷𝙴𝚁 𝙸𝚃 𝙸𝚂 𝙻𝙸𝚅𝙴 𝙾𝚁 𝙳𝙴𝙰𝙳</p>
-                </div>
+            </div>
             <div class="service-card" onclick="window.location.href='https://bulk-token-checker-by-tabbu.vercel.app'">
                 <h2>𝐂𝐇𝐄𝐂𝐊 𝐓𝐎𝐊𝐄𝐍 𝐅𝐈𝐋𝐄</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙷𝙴𝙲𝙺𝚂 𝚈𝙾𝚄𝚁 𝙼𝚄𝙻𝚃𝙸𝙿𝙻𝙴 𝚃𝙾𝙺𝙴𝙽𝚂 𝙰𝚃 𝙾𝙽𝙲𝙴</p>
-                </div>
-                <div class="service-card" onclick="window.location.href='https://group-uid-finder-by-tabbu.vercel.app'">
+            </div>
+            <div class="service-card" onclick="window.location.href='https://group-uid-finder-by-tabbu.vercel.app'">
                 <h2>𝐆𝐄𝐓 𝐌𝐄𝐒𝐒𝐄𝐍𝐆𝐄𝐑 𝐆𝐑𝐎𝐔𝐏𝐒</h2>
-                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙷𝙾𝚆 𝙰𝙻𝙻 𝙶𝚁𝙾𝚄𝙿𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚃𝙾𝙺𝙴𝙽</p>
-                </div>
-                <div class="service-card" onclick="window.location.href='https://id.traodoisub.com'">
+                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙷𝙾𝚆𝚂 𝙰𝙻𝙻 𝙶𝚁𝙾𝚄𝙿𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚃𝙾𝙺𝙴𝙽</p>
+            </div>
+            <div class="service-card" onclick="window.location.href='https://id.traodoisub.com'">
                 <h2>𝐆𝐄𝐓 𝐏𝐎𝐒𝐓 𝐔𝐈𝐃</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙵𝙴𝚃𝙲𝙷𝙴𝚂 𝙿𝙾𝚂𝚃 𝙽𝚄𝙼𝙱𝙴𝚁 𝙾𝙵 𝙿𝚁𝙾𝚅𝙸𝙳𝙴𝙳 𝙿𝙾𝚂𝚃 𝙻𝙸𝙽𝙺 𝙸𝙽 𝙽𝚄𝙼𝙴𝚁𝙸𝙲 𝙵𝙾𝚁𝙼</p>
             </div>
-           <div class="service-card" onclick="window.location.href='https://page-token-extractor-by-tabbu.vercel.app'">
+            <div class="service-card" onclick="window.location.href='https://page-token-extractor-by-tabbu.vercel.app'">
                 <h2>𝐏𝐀𝐆𝐄 𝐓𝐎𝐊𝐄𝐍 𝐄𝐗𝐓𝐑𝐀𝐂𝐓𝐎𝐑</h2>
-                <p>𝚃𝙷𝙸𝙴 𝚃𝙾𝙾𝙻 𝙴𝚇𝚃𝚁𝙰𝙲𝚃𝙴𝚂 𝚈𝙾𝚄𝚁 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙿𝙰𝙶𝙴 𝚃𝙾𝙺𝙴𝙽𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙰𝙲𝙲𝙴𝚂𝚂 𝚃𝙾𝙺𝙴𝙽</p>
+                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙴𝚇𝚃𝚁𝙰𝙲𝚃𝚂 𝚈𝙾𝚄𝚁 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙿𝙰𝙶𝙴 𝚃𝙾𝙺𝙴𝙽𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙰𝙲𝙲𝙴𝚂𝚂 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-           <div class="service-card" onclick="window.location.href='https://cookies-to-json-by-tabbu.vercel.app'">
+            <div class="service-card" onclick="window.location.href='https://cookies-to-json-by-tabbu.vercel.app'">
                 <h2>𝐅𝐁 𝐂𝐎𝐎𝐊𝐈𝐄𝐒 𝐓𝐎 𝐉𝐒𝐎𝐍 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐎𝐑</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝚂 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚂𝙴𝚂𝚂𝙸𝙾𝙽 𝙲𝙾𝙾𝙺𝙸𝙴𝚂 𝙸𝙽𝚃𝙾 .𝙹𝚂𝙾𝙽</p>
             </div>
             <div class="service-card" onclick="window.location.href='https://pak-sim-database-by-tabbu.vercel.app'">
                 <h2>𝐏𝐀𝐊 𝐒𝐈𝐌 𝐃𝐀𝐓𝐀</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙵𝙴𝚃𝙲𝙷𝙴𝚂 𝙳𝙰𝚃𝙰 𝙾𝙵 𝚃𝙰𝚁𝙶𝙴𝚃𝙴𝙳 𝙽𝚄𝙼𝙱𝙴𝚁𝚂 ... 𝙴.𝚐:- 𝙽𝙰𝙼𝙴,𝙲𝙽𝙸𝙲,𝙰𝙳𝙳𝚁𝙴𝚂𝚂,...𝚎𝚝𝚌.</p>
-                </div>
+            </div>
             <div class="service-card" onclick="window.location.href='https://server-coming-soon.onrender.com'">
                 <h2>𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐁𝐎𝐓 (𝐂𝐎𝐌𝐈𝐍𝐆 𝐒𝐎𝐎𝐍)</h2>
                 <p>𝚃𝙷𝙸𝚂 𝙿𝙰𝙽𝙴𝙻 𝚆𝙸𝙻𝙻 𝙷𝙾𝚂𝚃 𝚈𝙾𝚄𝚁 𝙵𝙱 𝙸𝙳𝚂 𝚆𝙷𝙴𝚁𝙴 𝚈𝙾𝚄 𝙿𝚄𝚃 𝚈𝙾𝚄𝚁 𝙸𝙳 𝙰𝙿𝙿𝚂𝚃𝙰𝚃𝙴 𝙰𝙽𝙳 𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚆𝙸𝙻𝙻 𝙷𝙾𝚂𝚃 𝙸𝚃 𝙻𝙸𝙺𝙴 𝙰𝙽 𝙵𝙱-𝙱𝙾𝚃</p>
-                </div>
-           <div class="service-card" onclick="window.location.href='https://server-coming-soon.onrender.com'">
+            </div>
+            <div class="service-card" onclick="window.location.href='https://server-coming-soon.onrender.com'">
                 <h2>𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 (𝐂𝐎𝐌𝐈𝐍𝐆 𝐒𝐎𝐎𝐍)</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚆𝙸𝙻𝙻 𝙲𝙾𝙽𝙽𝙴𝙲𝚃 𝚈𝙾𝚄𝚁 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 𝚆𝙸𝚃𝙷 𝙿𝙰𝙸𝚁𝙲𝙾𝙳𝙴 𝙰𝙽𝙳 𝚂𝙴𝙽𝙳𝚂 𝙰𝚄𝚃𝙾𝙼𝙰𝚃𝙴𝙳 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚃𝙾 𝚃𝙰𝚁𝙶𝙴𝚃𝙴𝙳 𝙽𝚄𝙼𝙱𝙴𝚁𝚂 𝙾𝚁 𝙶𝚁𝙾𝚄𝙿𝚂</p>
-                </div>
-          <div class="service-card" onclick="window.location.href='https://server-coming-soon.onrender.com'">
+            </div>
+            <div class="service-card" onclick="window.location.href='https://server-coming-soon.onrender.com'">
                 <h2>𝐄𝟐𝐄 𝐈𝐍𝐁𝐎𝐗 𝐒𝐄𝐑𝐕𝐄𝐑 (𝐂𝐎𝐌𝐈𝐍𝐆 𝐒𝐎𝐎𝐍)</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚆𝙸𝙻𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽𝚂 𝙱𝚈𝙿𝙰𝚂𝚂𝙸𝙽𝙶 𝙴𝙽𝙳-𝟸-𝙴𝙽𝙳 𝙴𝙽𝙲𝚁𝚈𝙿𝚃𝙸𝙾𝙽</p>
-                </div>
+            </div>
+        </div>
+        
         <div id="sfcn2zqrasxsa59ju7x9aezewybmuc26nf5"></div>
         <script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=n2zqrasxsa59ju7x9aezewybmuc26nf5&down=async" async></script>
         <noscript><a href="https://www.freecounterstat.com" title="free web counter"><img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=n2zqrasxsa59ju7x9aezewybmuc26nf5" border="0" title="free web counter" alt="free web counter"></a></noscript>
@@ -453,10 +486,10 @@
             <p>© 𝐓𝐎𝐎𝐋𝐒 𝐏𝐀𝐍𝐄𝐋 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘 𝐓𝐀𝐁𝐁𝐔 𝐀𝐑𝐀𝐈𝐍</p>
             <p><span> 𝐅𝐎𝐑 𝐀𝐍𝐘 𝐊𝐈𝐍𝐃 𝐎𝐅 𝐇𝐄𝐋𝐏 ⁑ <span class="glowing-arrow"> 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐎𝐖𝐍𝐄𝐑 </span></p>
             <div class="social-links">
-                <a href="https://www.facebook.com/TabbuArain" class="facebook-link">
+                <a href="https://www.facebook.com/TabbuArain" class="btn btn-facebook">
                     <i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊
                 </a>
-                <a href="https://wa.me/+994402197773" class="whatsapp-link">
+                <a href="https://wa.me/+994402197773" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏
                 </a>
             </div>
@@ -520,15 +553,40 @@
             }
         }
 
+        // Function to update date in Asia/Karachi timezone
+        function updateDateInKarachi() {
+            const dateElement = document.getElementById('dateValue');
+            try {
+                const options = { 
+                    timeZone: 'Asia/Karachi',
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                };
+                
+                const formatter = new Intl.DateTimeFormat('en-US', options);
+                const now = new Date();
+                const dateString = formatter.format(now);
+                
+                dateElement.innerHTML = dateString;
+            } catch (e) {
+                dateElement.innerHTML = '<span style="color: var(--primary-color)">Error</span>';
+                console.error('Date formatting error:', e);
+            }
+        }
+
         // Initialize with loading state
         document.addEventListener('DOMContentLoaded', function() {
             // First update
             calculateLivePing();
             updateLiveTimeInKarachi();
+            updateDateInKarachi();
             
             // Set up regular updates
-            setInterval(calculateLivePing, 2000); // Update ping every 1 seconds
+            setInterval(calculateLivePing, 2000); // Update ping every 2 seconds
             setInterval(updateLiveTimeInKarachi, 1000); // Update time every second
+            setInterval(updateDateInKarachi, 60000); // Update date every minute
             
             // Add click event to all service cards for better UX
             const cards = document.querySelectorAll('.service-card');
