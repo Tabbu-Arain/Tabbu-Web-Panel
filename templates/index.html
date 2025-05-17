@@ -1,169 +1,330 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ ping: 'Calculating...', time: 'Loading...' }">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tabbu Arain's Web Tools - Premium Facebook and WhatsApp automation tools">
+    <meta name="keywords" content="Facebook tools, WhatsApp tools, token generator, Tabbu Arain">
+    <meta name="author" content="Tabbu Arain">
     <title>𝐓𝐀𝐁𝐁𝐔 𝐖𝐄𝐁 𝐏𝐀𝐆𝐄</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #ffcc00;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --hover-color: #00ff00;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #ffF;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         nav {
             background-color: #000;
-            color: red;
-            padding: 15px 20px;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        nav .logo {
-            font-family: 'Arial', sans-serif;
-            font-size: 24px;
-            font-weight: bold;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
-        nav .menu-icon {
-            display: flex;
+        .menu-icon {
+            display: none;
             flex-direction: column;
             cursor: pointer;
-            align-items: center;
-        }
-
-        nav .menu-icon div {
             width: 30px;
-            height: 4px;
-            background-color: red;
-            margin: 4px 0;
-            transition: all .3s ease;
+            height: 25px;
+            justify-content: space-between;
         }
 
-        nav .menu-icon:hover div {
-            background-color: #fff;
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .menu-icon:hover span {
+            background-color: var(--text-color);
+        }
+
+        .nav-links {
             display: flex;
+            list-style: none;
         }
 
-        nav ul li {
-            margin-left: 25px;
+        .nav-links li {
+            margin-left: 1.5rem;
         }
 
-        nav ul li a {
-            color: red;
+        .nav-links a {
+            color: var(--primary-color);
             text-decoration: none;
-            font-size: 18px;
+            font-size: 1.1rem;
             font-weight: 500;
-            transition: color .3s ease;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        nav ul li a:hover {
-            color: green;
+        .nav-links a:hover {
+            color: var(--hover-color);
         }
 
         .container {
             max-width: 1200px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: #1e1e1e;
-            border-radius: 8px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
             box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .status-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-box {
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: #282828;
+            border: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .status-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(255, 0, 0, 0.2);
+            border-color: var(--secondary-color);
+        }
+
+        .ping-box {
+            margin-right: auto; /* Pushes to the left */
+        }
+
+        .time-box {
+            margin-left: auto; /* Pushes to the right */
+        }
+
+        .status-icon {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .status-text {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .status-value {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-left: 0.5rem;
         }
 
         h1 {
             text-align: center;
-            color: red;
-            font-size: 36px;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
 
-        .service-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .service-item {
-            flex: 1;
-            margin: 15px;
-            padding: 30px;
+        .service-card {
             background-color: #282828;
-            text-align: center;
-            border:3px solid red;
-            border-radius: 10px;
-            transition: transform .3s ease, box-shadow .3s ease;
+            padding: 1.5rem;
+            border: 3px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
             cursor: pointer;
-            color: #ffcc00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
         }
 
-        .service-item h2 {
-            color: #ffcc00;
-        }
-
-        .service-item p {
-            color: red;
-        }
-
-        .service-item:hover {
+        .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(255, 204, 0, 0.5);
+            border-color: var(--secondary-color);
+        }
+
+        .service-card h2 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--primary-color);
+            font-size: 0.95rem;
         }
 
         footer {
-            background-color: #1e1e1e;
-            color: red;
+            background-color: var(--card-bg);
+            color: var(--primary-color);
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            padding: 2rem;
+            margin-top: 3rem;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        footer p {
-            margin: 0;
-            font-size: 14px;
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                background-color: #000;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                text-align: left;
-            }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
 
-            nav ul.active {
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--hover-color);
+        }
+
+        .facebook-link {
+            color: #1877f2 !important;
+        }
+
+        .whatsapp-link {
+            color: #25d366 !important;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .menu-icon {
                 display: flex;
             }
 
-            nav ul li {
-                margin: 0;
-                padding: 15px 20px;
-            }
-
-            nav ul li a {
-                display: block;
-            }
-
-            .service-section {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background-color: #000;
+                width: 100%;
                 flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                transition: var(--transition);
             }
 
-            .service-item {
-                margin: 10px 0;
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 0.8rem 0;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .ping-box, .time-box {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .status-box {
+                padding: 0.8rem 1rem;
             }
         }
     </style>
@@ -172,121 +333,195 @@
     <nav>
         <div class="logo">𝐓𝐀𝐁𝐁𝐔 𝐀𝐑𝐀𝐈𝐍</div>
         <div class="menu-icon" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>       
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <ul id="nav-menu">
-            <li><a href="https://www.facebook.com/TabbuArain" style="color: blue;">𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊</a></li>
-            <li><a href="https://wa.me/+994402197773" style="color: green;">𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏</a></li>
-    </ul>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="https://www.facebook.com/TabbuArain" class="facebook-link"><i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊</a></li>
+            <li><a href="https://wa.me/+994402197773" class="whatsapp-link"><i class="fab fa-whatsapp"></i> 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏</a></li>
+        </ul>
     </nav>
 
     <div class="container">
-        <div> 
-    <p>PING: <span id="pingValue">Calculating...</span></p> 
-    <p>TIME: <span id="timeValue">Loading...</span></p> 
-   </div> 
-        <h1>𝐂𝐎𝐍𝐕𝐎 𝐓𝐎𝐎𝐋𝐒 𝐁𝐘 𝐓𝐀𝐁𝐁𝐔</h1> 
-        <section class="service-section">
-            <div class="service-item" onclick="window.location.href='http://fi8.bot-hosting.net:21292'">
+        <div class="status-container">
+            <div class="status-box ping-box">
+                <i class="fas fa-signal status-icon"></i>
+                <span class="status-text">𝐏𝐈𝐍𝐆 ⁑</span>
+                <span class="status-value" id="pingValue"><span class="loading"></span>Calculating...</span>
+            </div>
+            
+            <div class="status-box time-box">
+                <i class="fas fa-clock status-icon"></i>
+                <span class="status-text">𝐓𝐈𝐌𝐄 ⁑</span>
+                <span class="status-value" id="timeValue"><span class="loading"></span>Loading...</span>
+            </div>
+        </div>
+        
+        <h1>𝐂𝐎𝐍𝐕𝐎 𝐓𝐎𝐎𝐋𝐒 𝐁𝐘 𝐓𝐀𝐁𝐁𝐔</h1>
+        
+        <div class="service-grid">
+            <div class="service-card" onclick="window.location.href='http://fi8.bot-hosting.net:21292'">
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟏</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-            <div class="service-item" onclick="window.location.href='http://fi8.bot-hosting.net:22201'">
+           <div class="service-card" onclick="window.location.href='http://fi8.bot-hosting.net:22201'">
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟐</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-            <div class="service-item" onclick="window.location.href='http://fi8.bot-hosting.net:20818'">
+            <div class="service-card" onclick="window.location.href='http://fi8.bot-hosting.net:20818'">
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟑</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-           <div class="service-item" onclick="window.location.href='http://fi3.bot-hosting.net:21059'">
+           <div class="service-card" onclick="window.location.href='http://fi3.bot-hosting.net:21059'">
                 <h2>𝐅𝐁 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝟒</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙼𝙴𝚂𝚂𝙰𝙶𝙴𝚂 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-            <div class="service-item" onclick="window.location.href='http://fi4.bot-hosting.net:21604'">
+            <div class="service-card" onclick="window.location.href='http://fi4.bot-hosting.net:21604'">
                 <h2>𝐅𝐁 𝐏𝐎𝐒𝐓 𝐒𝐄𝐑𝐕𝐄𝐑</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙴𝙽𝙳𝚂 𝙲𝙾𝙼𝙼𝙴𝙽𝚃𝚂 𝙾𝙽 𝚈𝙾𝚄𝚁 𝙿𝙾𝚂𝚃 𝚄𝚂𝙸𝙽𝙶 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺 𝚃𝙾𝙺𝙴𝙽</p>
             </div>
-            <div class="service-item" onclick="window.location.href='http://104.168.76.139:27003'">
+            <div class="service-card" onclick="window.location.href='http://104.168.76.139:27003'">
                 <h2>𝐅𝐁 𝐓𝐎𝐊𝐄𝐍 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐎𝐑</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝚂 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚃𝙾𝙺𝙴𝙽 𝚄𝚂𝙸𝙽𝙶 𝙸𝙽𝚂𝚃𝙰𝙶𝚁𝙰𝙼 𝙻𝙾𝙶𝙸𝙽</p>
             </div>
-            <div class="service-item" onclick="window.location.href='https://wp-token-generator-by-tabbu.onrender.com/tabbuqr'">
+            <div class="service-card" onclick="window.location.href='https://wp-token-generator-by-tabbu.onrender.com/tabbuqr'">
                 <h2>𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐓𝐎𝐊𝐄𝐍 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐎𝐑</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙶𝙴𝙽𝙴𝚁𝙰𝚃𝙴𝚂 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 𝚃𝙾𝙺𝙴𝙽 𝙱𝚈 𝚀𝚁</p>
             </div>
-            <div class="service-item" onclick="window.location.href='https://fb-token-checker-by-tabbu.vercel.app'">
+            <div class="service-card" onclick="window.location.href='https://fb-token-checker-by-tabbu.vercel.app'">
                 <h2>𝐂𝐇𝐄𝐂𝐊 𝐒𝐈𝐍𝐆𝐋𝐄 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐓𝐎𝐊𝐄𝐍</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙷𝙴𝙲𝙺𝚂 𝚈𝙾𝚄𝚁 𝚃𝙾𝙺𝙴𝙽 𝙴𝙸𝚃𝙷𝙴𝚁 𝙸𝚃 𝙸𝚂 𝙻𝙸𝚅𝙴 𝙾𝚁 𝙳𝙴𝙰𝙳</p>
                 </div>
-            <div class="service-item" onclick="window.location.href='https://bulk-token-checker-by-tabbu.vercel.app'">
+            <div class="service-card" onclick="window.location.href='https://bulk-token-checker-by-tabbu.vercel.app'">
                 <h2>𝐂𝐇𝐄𝐂𝐊 𝐓𝐎𝐊𝐄𝐍 𝐅𝐈𝐋𝐄</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙷𝙴𝙲𝙺𝚂 𝚈𝙾𝚄𝚁 𝙼𝚄𝙻𝚃𝙸𝙿𝙻𝙴 𝚃𝙾𝙺𝙴𝙽𝚂 𝙰𝚃 𝙾𝙽𝙲𝙴</p>
                 </div>
-                <div class="service-item" onclick="window.location.href='https://group-uid-finder-by-tabbu.vercel.app'">
+                <div class="service-card" onclick="window.location.href='https://group-uid-finder-by-tabbu.vercel.app'">
                 <h2>𝐆𝐄𝐓 𝐌𝐄𝐒𝐒𝐄𝐍𝐆𝐄𝐑 𝐆𝐑𝐎𝐔𝐏𝐒</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝚂𝙷𝙾𝚆 𝙰𝙻𝙻 𝙶𝚁𝙾𝚄𝙿𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚃𝙾𝙺𝙴𝙽</p>
                 </div>
-           <div class="service-item" onclick="window.location.href='https://page-token-extractor-by-tabbu.vercel.app'">
-                <h2>𝐏𝐀𝐆𝐄 𝐓𝐎𝐊𝐄𝐍 𝐄𝐗𝐓𝐑𝐀𝐂𝐓𝐎𝐑</h2>
-                <p>𝚃𝙷𝙸𝙴 𝚃𝙾𝙾𝙻 𝙴𝚇𝚃𝚁𝙰𝙲𝚃𝙴𝚂 𝚈𝙾𝚄𝚁 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙿𝙰𝙶𝙴 𝚃𝙾𝙺𝙴𝙽𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙰𝙲𝙲𝙴𝚂𝚂 𝚃𝙾𝙺𝙴𝙽</p>
-            </div>
-           <div class="service-item" onclick="window.location.href='https://cookies-to-json-by-tabbu.vercel.app'">
-                <h2>𝐅𝐁 𝐂𝐎𝐎𝐊𝐈𝐄𝐒 𝐓𝐎 𝐉𝐒𝐎𝐍 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐎𝐑</h2>
-                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝚂 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚂𝙴𝚂𝚂𝙸𝙾𝙽 𝙲𝙾𝙾𝙺𝙸𝙴𝚂 𝙸𝙽𝚃𝙾 .𝙹𝚂𝙾𝙽</p>
-            </div>
-            <div class="service-item" onclick="window.location.href='https://pak-sim-database-by-tabbu.vercel.app'">
-                <h2>𝐏𝐀𝐊 𝐒𝐈𝐌 𝐃𝐀𝐓𝐀</h2>
-                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙵𝙴𝚃𝙲𝙷𝙴𝚂 𝙳𝙰𝚃𝙰 𝙾𝙵 𝚃𝙰𝚁𝙶𝙴𝚃𝙴𝙳 𝙽𝚄𝙼𝙱𝙴𝚁𝚂 ... 𝙴.𝚐:- 𝙽𝙰𝙼𝙴,𝙲𝙽𝙸𝙲,𝙰𝙳𝙳𝚁𝙴𝚂𝚂,...𝚎𝚝𝚌.</p>
-                </div>
-           <div class="service-item" onclick="window.location.href='https://id.traodoisub.com'">
+                <div class="service-card" onclick="window.location.href='https://id.traodoisub.com'">
                 <h2>𝐆𝐄𝐓 𝐏𝐎𝐒𝐓 𝐔𝐈𝐃</h2>
                 <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙵𝙴𝚃𝙲𝙷𝙴𝚂 𝙿𝙾𝚂𝚃 𝙽𝚄𝙼𝙱𝙴𝚁 𝙾𝙵 𝙿𝚁𝙾𝚅𝙸𝙳𝙴𝙳 𝙿𝙾𝚂𝚃 𝙻𝙸𝙽𝙺 𝙸𝙽 𝙽𝚄𝙼𝙴𝚁𝙸𝙲 𝙵𝙾𝚁𝙼</p>
             </div>
-        <div id="sfcn2zqrasxsa59ju7x9aezewybmuc26nf5"></div><script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=n2zqrasxsa59ju7x9aezewybmuc26nf5&down=async" async></script><noscript><a href="https://www.freecounterstat.com" title="free web counter"><img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=n2zqrasxsa59ju7x9aezewybmuc26nf5" border="0" title="free web counter" alt="free web counter"></a></noscript>
-        </section>
+           <div class="service-card" onclick="window.location.href='https://page-token-extractor-by-tabbu.vercel.app'">
+                <h2>𝐏𝐀𝐆𝐄 𝐓𝐎𝐊𝐄𝐍 𝐄𝐗𝐓𝐑𝐀𝐂𝐓𝐎𝐑</h2>
+                <p>𝚃𝙷𝙸𝙴 𝚃𝙾𝙾𝙻 𝙴𝚇𝚃𝚁𝙰𝙲𝚃𝙴𝚂 𝚈𝙾𝚄𝚁 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙿𝙰𝙶𝙴 𝚃𝙾𝙺𝙴𝙽𝚂 𝚄𝚂𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝙰𝙲𝙲𝙴𝚂𝚂 𝚃𝙾𝙺𝙴𝙽</p>
+            </div>
+           <div class="service-card" onclick="window.location.href='https://cookies-to-json-by-tabbu.vercel.app'">
+                <h2>𝐅𝐁 𝐂𝐎𝐎𝐊𝐈𝐄𝐒 𝐓𝐎 𝐉𝐒𝐎𝐍 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐎𝐑</h2>
+                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝚂 𝚈𝙾𝚄𝚁 𝙵𝙱 𝚂𝙴𝚂𝚂𝙸𝙾𝙽 𝙲𝙾𝙾𝙺𝙸𝙴𝚂 𝙸𝙽𝚃𝙾 .𝙹𝚂𝙾𝙽</p>
+            </div>
+            <div class="service-card" onclick="window.location.href='https://pak-sim-database-by-tabbu.vercel.app'">
+                <h2>𝐏𝐀𝐊 𝐒𝐈𝐌 𝐃𝐀𝐓𝐀</h2>
+                <p>𝚃𝙷𝙸𝚂 𝚃𝙾𝙾𝙻 𝙵𝙴𝚃𝙲𝙷𝙴𝚂 𝙳𝙰𝚃𝙰 𝙾𝙵 𝚃𝙰𝚁𝙶𝙴𝚃𝙴𝙳 𝙽𝚄𝙼𝙱𝙴𝚁𝚂 ... 𝙴.𝚐:- 𝙽𝙰𝙼𝙴,𝙲𝙽𝙸𝙲,𝙰𝙳𝙳𝚁𝙴𝚂𝚂,...𝚎𝚝𝚌.</p>
+                </div>
+        
+        <div id="sfcn2zqrasxsa59ju7x9aezewybmuc26nf5"></div>
+        <script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=n2zqrasxsa59ju7x9aezewybmuc26nf5&down=async" async></script>
+        <noscript><a href="https://www.freecounterstat.com" title="free web counter"><img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=n2zqrasxsa59ju7x9aezewybmuc26nf5" border="0" title="free web counter" alt="free web counter"></a></noscript>
     </div>
 
     <footer>
-        <p>© 𝟐𝟎𝟐𝟓 𝐎𝐖𝐍𝐄𝐑 :- 𝙏𝘼𝘽𝘽𝙐 𝘼𝙍𝘼𝙄𝙉</p>
-        <p> 𝙈𝘼𝘿𝙀 𝙒𝙄𝙏𝙃 💚 </P>
-         <a href="https://www.facebook.com/TabbuArain" class="facebook-link" style="margin-right: 30px;">
-  <i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊
-</a>
-<a href="https://wa.me/+994402197773" class="whatsapp-link">
-  <i class="fab fa-whatsapp"></i>𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿
-</a>
-      </footer>
-     <script>
-// Function to calculate live ping
-        function calculateLivePing() {
-            var startTime = new Date().getTime();
-            fetch('https://www.google.com', { mode: 'no-cors' })
-                .then(function(response) {
-                    var endTime = new Date().getTime();
-                    var pingTime = endTime - startTime;
-                    document.getElementById('pingValue').textContent = pingTime + ' ms';
-                })
-                .catch(function(err) {
-                    console.error('Fetch error: ', err);
-                    document.getElementById('pingValue').textContent = 'Error';
-                });
+        <div class="footer-content">
+            <p>© 𝐓𝐎𝐎𝐋𝐒 𝐏𝐀𝐍𝐄𝐋 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘 𝐓𝐀𝐁𝐁𝐔 𝐀𝐑𝐀𝐈𝐍</p>
+            <p>𝐌𝐀𝐃𝐄 𝐖𝐈𝐓𝐇 💚</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/TabbuArain" class="facebook-link">
+                    <i class="fab fa-facebook"></i> 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊
+                </a>
+                <a href="https://wa.me/+994402197773" class="whatsapp-link">
+                    <i class="fab fa-whatsapp"></i> 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
         }
 
-        // Function to update live time in Asia/karachi
-        function updateLiveTimeInKarachi() {
-            var options = { timeZone: 'Asia/Karachi', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' };
-            var formatter = new Intl.DateTimeFormat('en-US', options);
-            var timeString = formatter.format(new Date());
-            document.getElementById('timeValue').textContent = timeString;
+        // Function to calculate live ping with better error handling
+        function calculateLivePing() {
+            const pingElement = document.getElementById('pingValue');
+            const startTime = performance.now();
+            
+            // Use a small image request for ping measurement
+            const img = new Image();
+            img.src = 'https://www.google.com/images/phd/px.gif?t=' + Date.now();
+            
+            img.onload = function() {
+                const endTime = performance.now();
+                const pingTime = Math.round(endTime - startTime);
+                pingElement.innerHTML = `${pingTime} <small>ms</small>`;
+            };
+            
+            img.onerror = function() {
+                pingElement.innerHTML = '<span style="color: var(--primary-color)">Error</span>';
+            };
+            
+            // Timeout fallback
+            setTimeout(() => {
+                if (!img.complete) {
+                    pingElement.innerHTML = '<span style="color: var(--primary-color)">Timeout</span>';
+                }
+            }, 5000);
         }
-// Update live ping and time every second
-        setInterval(function() {
+
+        // Function to update live time in Asia/Karachi with better formatting
+        function updateLiveTimeInKarachi() {
+            const timeElement = document.getElementById('timeValue');
+            try {
+                const options = { 
+                    timeZone: 'Asia/Karachi', 
+                    hour12: true, 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit'
+                };
+                
+                const formatter = new Intl.DateTimeFormat('en-US', options);
+                const now = new Date();
+                const timeString = formatter.format(now);
+                
+                timeElement.innerHTML = timeString;
+            } catch (e) {
+                timeElement.innerHTML = '<span style="color: var(--primary-color)">Error</span>';
+                console.error('Time formatting error:', e);
+            }
+        }
+
+        // Initialize with loading state
+        document.addEventListener('DOMContentLoaded', function() {
+            // First update
             calculateLivePing();
             updateLiveTimeInKarachi();
-        }, 1000); // Update every 1 second
+            
+            // Set up regular updates
+            setInterval(calculateLivePing, 1000); // Update ping every 1 seconds
+            setInterval(updateLiveTimeInKarachi, 1000); // Update time every second
+            
+            // Add click event to all service cards for better UX
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+
+        // Better error handling for page
+        window.addEventListener('error', function(e) {
+            console.error('Page error:', e.error);
+        });
     </script>
 </body>
 </html>
